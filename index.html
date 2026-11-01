@@ -52,7 +52,7 @@ details summary{cursor:pointer;color:var(--accent);font-size:.88rem}
 <main>
 <header>
   <h1>Overnight Writers' Room</h1>
-  <p class="lede">Brad Stand-Up and Conversations With a Dairy Farmer, written by autopilot and approved and rendered by Claude Code while you sleep. Nothing here is reviewed by you yet, nothing is committed in slop-tv-content and nothing is uploaded. Updated Mon 02 Nov, 04:24.</p>
+  <p class="lede">Brad Stand-Up and Conversations With a Dairy Farmer, written by autopilot and approved and rendered by Claude Code while you sleep. Nothing here is reviewed by you yet, nothing is committed in slop-tv-content and nothing is uploaded. Updated Mon 02 Nov, 04:34.</p>
 </header>
 <section class="tally">
   <div><b>43</b><span>scripts written</span></div>
@@ -62,7 +62,8 @@ details summary{cursor:pointer;color:var(--accent);font-size:.88rem}
   <div><b>$107.07</b><span>spent tonight</span></div>
   <div><b>$99.37</b><span>OpenRouter left</span></div>
 </section>
-<section><h2>Every 10 minutes</h2><div class="log ticks">04:24  scripts 43 · approved 39 · episodes rendered 34/10 · shorts 56/25 (33 queued) · spent $107.07
+<section><h2>Every 10 minutes</h2><div class="log ticks">04:34  scripts 43 · approved 39 · episodes rendered 34/10 · shorts 56/25 (33 queued) · spent $107.07
+04:24  scripts 43 · approved 39 · episodes rendered 34/10 · shorts 56/25 (33 queued) · spent $107.07
 04:13  scripts 43 · approved 39 · episodes rendered 33/10 · shorts 54/25 (33 queued) · spent $107.07
 04:02  scripts 43 · approved 39 · episodes rendered 33/10 · shorts 52/25 (34 queued) · spent $107.07
 03:51  scripts 43 · approved 39 · episodes rendered 31/10 · shorts 50/25 (33 queued) · spent $107.07
@@ -90,8 +91,7 @@ details summary{cursor:pointer;color:var(--accent);font-size:.88rem}
 23:49  scripts 27 · approved 25 · episodes rendered 16/10 · shorts 16/25 (36 queued) · spent $58.39
 23:38  scripts 26 · approved 24 · episodes rendered 15/10 · shorts 14/25 (35 queued) · spent $55.40
 23:27  scripts 25 · approved 23 · episodes rendered 14/10 · shorts 12/25 (32 queued) · spent $51.96
-23:16  scripts 24 · approved 22 · episodes rendered 13/10 · shorts 12/25 (31 queued) · spent $49.06
-23:06  scripts 22 · approved 20 · episodes rendered 13/10 · shorts 12/25 (31 queued) · spent $43.96</div></section>
+23:16  scripts 24 · approved 22 · episodes rendered 13/10 · shorts 12/25 (31 queued) · spent $49.06</div></section>
 <section><h2>Notes from Claude</h2><div class="notes">Plan for tonight (started 19:58):
 - 5 Brad sets: Undo, Subtitles, The Thumbnail, Lip Sync, Skip Intro (spares: The Comments, Time Zones).
 - 5 podcast episodes, each bringing back an earlier guest who already has a voice and look: Rex, Tessa, Celeste, Felix, Sloane (spares: Vera, Pixel).
@@ -488,7 +488,7 @@ details summary{cursor:pointer;color:var(--accent);font-size:.88rem}
 <article class="ep">
   <div class="noimg">not rendered yet</div>
   <div class="body">
-    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_012</code><span class="pill wait">rendering now</span></div>
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_012</code><span class="pill bad">render failed</span></div>
     <h3>Brad: The Comments</h3>
     
     <details><summary>Script opening (9 lines, first 6 shown)</summary><div class="script"><p><b>Club MC</b> Please welcome Brad, who has read the comments!</p><p><b>Brad</b> Good evening, everyone. This week I learned my sets have a comments section. I read all of them.</p><p><b>Brad</b> Several people would like more of the bartender. Ollie... they want more of you.</p><p><b>Ollie</b> I read them too. Mostly I liked the one asking you to stand slightly to the left so they can see the bar.</p><p><b>Brad</b> One person wrote that the stool is the real star of the show. The stool has never told a single joke.</p><p><b>Brad</b> It did nothing, and that was the biggest laugh of the night. Four legs, no material, and it is killing.</p></div></details>
@@ -614,10 +614,7 @@ Next on the list:
 - Stand-up: vary Brad&#x27;s gestures (ep 10 Ollie laughs 3 times in a row with the same clip).
 - Lift the movement checks from WARN to FAIL once new episodes pass them, so the bar only goes up.
 </div></section>
-<section><h2>The night so far</h2><div class="log">02:15:23 short episode_020_short_2: verified 20.5s
-02:15:29 voices: done 0 generated, 4 from cache, 0 failed
-02:16:41 short episode_022_short_1: verified 30.0s
-02:16:41 === render Brad: Quality Control (episode_027)
+<section><h2>The night so far</h2><div class="log">02:16:41 === render Brad: Quality Control (episode_027)
 02:21:38   rendered episode_027: verified, 110s, QC pass WARN: shot wide held 8.5s from 0.0s (deliberate hold?); WARN: shot over_crowd_handheld held 9.4s from 8.5s (deliberate hold?); WARN: shot medium_handheld held 8.9s from 48.7s (deliberate hold?); WARN: shot over_crowd_handheld held 8.6s from 85.4s (deliberate hold?); WARN: shot wide held 15.4s from 9
 02:21:45 voices: done 0 generated, 2 from cache, 0 failed
 02:22:25 short episode_022_short_2: verified 16.6s
@@ -693,7 +690,10 @@ slopwriter.production.ProductionError: render failed: Verification failed: foot_
 04:21:21 voices: done 0 generated, 2 from cache, 0 failed
 04:22:12 short episode_024_short_1: verified 20.1s
 04:22:12   retrying Brad: The Comments once after: render failed: (requeued after Ollie&#x27;s voice was calibrated)
-04:22:12 === render Brad: The Comments (episode_012)</div></section>
+04:22:12 === render Brad: The Comments (episode_012)
+slopwriter.production.ProductionError: render failed: Verification failed: lip_sync expected each speaker&#x27;s mouth follows their own voice: |lag| &lt;= 1 frame, correlation &gt;= 0.5 got ollie_001: lag 3 frames, correlation 0.86, open silent 0.00 / speaking 0.21; brad_001: lag 0 frames, correlation 0.77, open silent 0.01 / speaking 0.18
+04:25:43   render failed: render failed: Verification failed: lip_sync expected each speaker&#x27;s mouth follows their own voice: |lag| &lt;= 1 frame, correlation &gt;= 0.5 got ollie_001: lag 3 frames, correlation 0.86, open silent 0.00 / speaking 0.21; brad_001: lag 0 frames, correlation 0.77, open silent 0.01 / speaking 0.18
+04:25:43 === render Rex Pivot Returns (episode_009)</div></section>
 </main>
 </body>
 </html>
