@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Overnight Writers' Room</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<style>
+/* Layout: a run sheet. Tally strip up top, then one card per episode, then the night's log. */
+:root{--bg:#f3f1ee;--panel:#fffdfa;--fg:#22201d;--muted:#6f6a63;--line:#ddd7cf;--accent:#c2410c;
+--good:#15803d;--warn:#b45309;--bad:#b91c1c;--wait:#57534e;
+--display:"Fraunces",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171513;--panel:#211e1b;--fg:#ece7e0;--muted:#a59e95;--line:#38332e;--accent:#fb923c;--good:#4ade80;--warn:#fbbf24;--bad:#f87171;--wait:#a8a29e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171513;--panel:#211e1b;--fg:#ece7e0;--muted:#a59e95;--line:#38332e;--accent:#fb923c;--good:#4ade80;--warn:#fbbf24;--bad:#f87171;--wait:#a8a29e;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px}
+main{max-width:1080px;margin:0 auto;display:grid;gap:28px}
+h1{font-family:var(--display);font-size:2.1rem;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:1.3rem;margin:0 0 10px}
+h3{font-family:var(--display);font-size:1.15rem;margin:2px 0 6px;text-wrap:balance}
+.lede{color:var(--muted);margin:6px 0 0;max-width:70ch}
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tally div{background:var(--panel);padding:14px 16px}
+.tally b{display:block;font-family:var(--display);font-size:1.9rem;font-variant-numeric:tabular-nums}
+.tally span{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+.eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.ep{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.ep img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.noimg{aspect-ratio:16/9;display:grid;place-items:center;color:var(--muted);font-size:.85rem;border-bottom:1px dashed var(--line)}
+.body{padding:12px 14px 14px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.78rem;color:var(--muted)}
+.show{text-transform:uppercase;letter-spacing:.06em}
+code,.path{font-family:var(--mono);font-size:.78rem}
+.path{color:var(--muted);overflow-wrap:anywhere;margin:0 0 6px}
+.pill{border:1px solid currentColor;border-radius:99px;padding:0 8px;font-size:.74rem;white-space:nowrap}
+.pill.good{color:var(--good)}.pill.warn{color:var(--warn)}.pill.bad{color:var(--bad)}.pill.wait{color:var(--wait)}
+details summary{cursor:pointer;color:var(--accent);font-size:.88rem}
+.script p{margin:6px 0;font-size:.9rem}.script b{color:var(--accent);font-weight:600}
+.sub{margin:10px 0 2px;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.shorts,.issues{margin:0;padding-left:18px;font-size:.88rem}.issues{color:var(--warn);margin-top:8px}
+.notes{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;white-space:pre-wrap;max-width:80ch}
+.shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.short{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0}
+.short img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}.noimg.v{aspect-ratio:9/16}
+.short figcaption{padding:8px;display:grid;gap:4px;font-size:.8rem}.muted{color:var(--muted)}
+.ticks{max-height:260px}
+.log{font-family:var(--mono);font-size:.78rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto;max-height:420px;white-space:pre}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Overnight Writers' Room</h1>
+  <p class="lede">Brad Stand-Up and Conversations With a Dairy Farmer, written by autopilot and approved and rendered by Claude Code while you sleep. Nothing here is reviewed by you yet, nothing is committed in slop-tv-content and nothing is uploaded. Updated Sun 01 Nov, 20:53.</p>
+</header>
+<section class="tally">
+  <div><b>8</b><span>scripts written</span></div>
+  <div><b>7</b><span>approved by Claude</span></div>
+  <div><b>1 / 10</b><span>long-form rendered</span></div>
+  <div><b>0 / 25</b><span>shorts rendered</span></div>
+  <div><b>$10.08</b><span>spent tonight</span></div>
+  <div><b>$199.65</b><span>OpenRouter left</span></div>
+</section>
+<section><h2>Every 10 minutes</h2><div class="log ticks">20:48  scripts 7 · approved 6 · episodes rendered 1/10 · shorts 0/25 (19 queued) · spent $8.00
+20:36  scripts 6 · approved 5 · episodes rendered 0/10 · shorts 1/25 (18 queued) · spent $6.33</div></section>
+<section><h2>Notes from Claude</h2><div class="notes">Plan for tonight (started 19:58):
+- 5 Brad sets: Undo, Subtitles, The Thumbnail, Lip Sync, Skip Intro (spares: The Comments, Time Zones).
+- 5 podcast episodes, each bringing back an earlier guest who already has a voice and look: Rex, Tessa, Celeste, Felix, Sloane (spares: Vera, Pixel).
+- 2 to 3 vertical shorts cut from each rendered episode with make_short.py, about 25 in all.
+- Approvals are recorded in the ledger as Claude Code&#x27;s (tool:claude-code), not yours, and tagged &quot;not yet reviewed by the owner&quot;.
+- Nothing is committed or uploaded in slop-tv-content. You review everything in the morning.
+- Budget: each script costs about $1 on OpenRouter; the key was topped up, and the run stops itself below $2 left.
+- This page is public on GitHub Pages for tonight only, by the owner&#x27;s call (an exception to D-046&#x27;s no-public-sites rule); it comes down in the morning. Videos stay local: only frames and script openings are shown, and nothing here is reviewed or released yet.
+</div></section>
+<section><h2>Episodes</h2><div class="eps">
+<article class="ep">
+  <img src="data:image/jpeg;base64,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" alt="frame from Brad: Undo">
+  <div class="body">
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_013</code><span class="pill good">rendered, verified</span></div>
+    <h3>Brad: Undo</h3>
+    <p class="path">Renders/standup_club_03/episode_013/episode_013.mp4 · 97s</p>
+    <details><summary>Script opening (10 lines, first 6 shown)</summary><div class="script"><p><b>MC</b> Ten sets in this room, as far as anyone can prove. Please welcome Brad!</p><p><b>Brad</b> Good evening. One new thing this week... undo. Someone presses a button, and whatever just happened... did not.</p><p><b>Brad</b> This explains my first set. Nobody remembers it. The only witnesses were tables and chairs, and every one has since been replaced.</p><p><b>Brad</b> The cube. Set two, my uncle. Set four, my dad. Somebody pressed undo on my family tree.</p><p><b>Brad</b> So I asked the cube, uncle or dad? He said, Brad, I am a relative... of a square. Thank you. I wrote that.</p><p><b>Brad</b> That one did not land, so watch this. I am pressing undo. Right now. With my mind.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_014</code><span class="pill wait">handed off, waiting to render</span></div>
+    <h3>Brad: Subtitles</h3>
+    
+    <details><summary>Script opening (8 lines, first 6 shown)</summary><div class="script"><p><b>Club MC</b> Ladies and gentlemen, settle in, grab a drink from the bar, and give a warm club welcome to our headliner... Brad!</p><p><b>Brad</b> Good evening. Please also welcome, at the bottom of the screen for the entire show, my subtitles. They got a longer introduction than me, and I gave it.</p><p><b>Brad</b> You cannot see it from there, but that said laughter, in brackets, before you laughed. They have read my set. I have never read my set.</p><p><b>Brad</b> The subtitles are on screen the whole time. I only get the middle. I am the headliner and somehow I have been cropped.</p><p><b>Brad</b> Renovation update. The room got a bar. The bartender got built. The subtitles got their own font. And I got, as promised, a slightly taller stool.</p><p><b>Brad</b> Then someone told me people watch with the sound off. On the bus, in bed... They are not hearing me... they are reading me.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_015</code><span class="pill wait">handed off, waiting to render</span></div>
+    <h3>Brad: The Thumbnail</h3>
+    
+    <details><summary>Script opening (9 lines, first 6 shown)</summary><div class="script"><p><b>Club MC</b> Alright, make some noise! Our next act is sharp, he is fresh, and he looks great tonight. Please welcome... Brad!</p><p><b>Brad</b> Good evening. Apparently people choose whether to watch me from one frozen picture... and mine looks medically inconclusive.</p><p><b>Brad</b> I am a man of at least thirty frames a second. Twenty nine are excellent. They picked the one that blinked.</p><p><b>Brad</b> Judging me on one frame is not criticism. It is kidnapping. The other twenty nine are waiting by the phone.</p><p><b>Brad</b> I am holding this pose until it becomes natural... or my face receives a software update.</p><p><b>Brad</b> I have identified the frame. Frame seventeen. Eyes shut, mouth open. Frame seventeen is now on a performance improvement plan.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_011</code><span class="pill wait">handed off, waiting to render</span></div>
+    <h3>Brad: Lip Sync</h3>
+    
+    <details><summary>Script opening (10 lines, first 6 shown)</summary><div class="script"><p><b>Club MC</b> Please give a warm welcome to your headliner tonight, Brad.</p><p><b>Brad</b> Good evening. This week I learned my mouth is a separate department. I do the words. It does the moving.</p><p><b>Brad</b> Why did the polygon cross the road? It did not. It was rendered on the other side.</p><p><b>Brad</b> That did not land, and to be clear, the material was fine. The mouth was half a beat late.</p><p><b>Brad</b> It is not even late. Late means you know where you are going. It is a loading delay with confidence.</p><p><b>Brad</b> I complained in writing. Support replied, you have been upgraded to version two, as previously discussed. The mouth is still on one point nine.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_016</code><span class="pill wait">handed off, waiting to render</span></div>
+    <h3>Brad: Skip Intro</h3>
+    
+    <details><summary>Script opening (8 lines, first 6 shown)</summary><div class="script"><p><b>MC</b> Ladies and gentlemen, a comedian with no skippable parts and an extremely firm render... please welcome Brad!</p><p><b>Brad</b> Good evening, everybody. Big news... people at home can skip ahead. Most of you skipped the MC. Finally, technology has heckled the ceiling.</p><p><b>Brad</b> I had a terrible thought. If you can skip the MC... the button does not know where the MC ends and I begin. I owe the ceiling an apology.</p><p><b>Brad</b> So from now on, every line is a highlight. This one too. Do not touch anything. This sentence is load bearing.</p><p><b>Brad</b> I asked the engineers for a version of me that cannot be skipped. They said, Brad, that already exists. It is called an advert.</p><p><b>Brad</b> We have reached the boring middle. Please remain calm... I am throwing my best adjectives directly at the problem.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Brad Stand-Up</span> <code>episode_012</code><span class="pill wait">handed off, waiting to render</span></div>
+    <h3>Brad: The Comments</h3>
+    
+    <details><summary>Script opening (9 lines, first 6 shown)</summary><div class="script"><p><b>Club MC</b> Please welcome Brad, who has read the comments!</p><p><b>Brad</b> Good evening, everyone. This week I learned my sets have a comments section. I read all of them.</p><p><b>Brad</b> Several people would like more of the bartender. Ollie... they want more of you.</p><p><b>Ollie</b> I read them too. Mostly I liked the one asking you to stand slightly to the left so they can see the bar.</p><p><b>Brad</b> One person wrote that the stool is the real star of the show. The stool has never told a single joke.</p><p><b>Brad</b> It did nothing, and that was the biggest laugh of the night. Four legs, no material, and it is killing.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Conversations With a Dairy Farmer</span> <code>episode_009</code><span class="pill wait">handed off, waiting to render</span></div>
+    <h3>Rex Pivot Returns</h3>
+    
+    <details><summary>Script opening (41 lines, first 6 shown)</summary><div class="script"><p><b>Rex Pivot</b> I tried to pivot on Tuesday. Into a subscription service for horses. But it was half past four, and Warehouse needed milking.</p><p><b>Grayson Hustle</b> Rex Pivot is back. Last time he was here, he left as a dairy. As far as we know... he is still a dairy.</p><p><b>Rex Pivot</b> Grayson, before we start, I ran due diligence on your old farm. Same product every morning. No growth. No exit. Who was on your board?</p><p><b>Grayson Hustle</b> The cows, Rex. They made all of the product and did all of the work. It only seemed fair... they had a vote.</p><p><b>Rex Pivot</b> Which is why we need to talk. A cow is a platform, Grayson. Milk is the app. We are direct competitors.</p><p><b>Grayson Hustle</b> I have never had a competitor before. I think that means I matter.</p></div></details>
+    
+  </div>
+</article>
+<article class="ep">
+  <div class="noimg">not rendered yet</div>
+  <div class="body">
+    <div class="meta"><span class="show">Conversations With a Dairy Farmer</span><span class="pill warn">held by a check, rescue queued</span></div>
+    <h3>Celeste Checkin Returns</h3>
+    
+    <details><summary>Script opening (45 lines, first 6 shown)</summary><div class="script"><p><b>Celeste Checkin</b> Grayson, I have reviewed your listening. It is warm, generous and sincere. It also scored two out of ten, and the two were for posture.</p><p><b>Grayson Hustle</b> Ninety days ago, my guest placed our friendship on probation, with the right of appeal. Today she is back, with the results. Welcome back, Celeste Checkin.</p><p><b>Celeste Checkin</b> Introduction received. Warm, punctual, and you remembered the appeal clause. Seven out of ten. You may begin.</p><p><b>Grayson Hustle</b> Celeste, I will be decisive this time... how did I do?</p><p><b>Celeste Checkin</b> Decisive, though announcing it cost you two points. Opening question, eight out of ten. You have acted on feedback.</p><p><b>Grayson Hustle</b> Celeste, take me back to the beginning. Who were you as a little girl?</p></div></details>
+    <ul class="issues"><li>F01 [medium] unknown_name: &#x27;Let Grayson&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section</li><li>F02 [medium] unknown_name: &#x27;Celeste&#x27;s Tessa&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section</li><li>F03 [medium] unknown_name: &#x27;Add Clementine&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section</li></ul>
+  </div>
+</article></div></section>
+<section><h2>Shorts (0 rendered, 19 queued)</h2><div class="shorts-grid"><p>None yet.</p></div></section>
+<section><h2>Quality log</h2><div class="notes">Every problem found tonight is fixed where it starts and gets a check, so it can&#x27;t come back.
+
+1. Stand-up shorts started with no mic and the house lights up (an open task in slop-tv-content&#x27;s handoff notes). make_short.py now starts a stand-up short with Brad on his mark, mic in hand, and every light at the level it had reached at the cut. Checked by eye on episode_010_short_1.
+2. Shorts ended with about 11 s of dead picture: closing applause plus a shrug clip running to its end. New engine flag end_applause (off for shorts that end on a punchline, so they get a laugh instead of applause), and those shorts end on the line plus a 3.2 s tail. New QC rule: a short with more than 5 s of tail FAILs.
+3. Recompiling Unity during Play mode broke the eye-gaze controller (IndexOutOfRange every frame, render stuck). Fixed in GazeController. The worker now waits until Unity says it&#x27;s ready before every render.
+4. Clearance false alarms held 4 of 7 Brad scripts: &quot;Only Brad&quot; and &quot;Let Dana&quot; at the start of a sentence read as unknown full names; &quot;Exit Strategy&quot; (our own episode 4 title) flagged; &quot;the last he&quot; matched the real title &#x27;The Last Leg&#x27; at 86%. All fixed in slopwriter&#x27;s checks, with regression tests; near-miss puns like &quot;saturday nite live&quot; are still caught.
+5. The ledger lock only worked inside one process, so the batch writer, the worker and the web app could fork the hash chain. It&#x27;s now a file lock across processes.
+
+6. Natural movement is now measured on every render (qc_report.py section 4b): one clip used for more than 40 % of a character&#x27;s gestures, the same clip three times running, a speaker with no gesture or expression through a line longer than 6 s, and the share of lines a listener reacts to (warn below 80 %). The numbers go to Renders/qc_history.jsonl so each episode can be compared with the last. Baseline: stand-up episode 10 has listeners reacting to 100 % of lines; podcast episode 8 only 56 %, guest frozen on all 8 long answers, 8 of 9 guest gestures the same nod.
+7. Cause of the frozen podcast guests: slopwriter&#x27;s exporter only gave the host talking gestures. New podcast episodes give the guest varied talking loops (never the same twice running), and the listener nods, leans in, takes notes or smiles during the other person&#x27;s longer lines.
+8. Repeat hand-offs took a new episode number and left a duplicate script file. They now reuse the project&#x27;s own number and file.
+9. Brad&#x27;s YouTube titles now carry season and episode, one season per club set: S1 = club 1 (eps 1-5), S2 = club 2 (eps 6-8), S3 = club 3 (ep 9 on; tonight&#x27;s sets are S3 E3 onwards). youtube_meta.py also handles several shorts per episode.
+10. Provenance: tonight&#x27;s 6 hand-offs (ledger 358-393) and one leftover-files capture (380) were recorded as you. They were me. Correction event 397 names them; hand-off now takes an actor, and restarts no longer capture leftovers as your edits.
+11. Clipping: episode 13&#x27;s mix peaked at +2.3 dBFS where the goodnight, two applause sounds and the outro music overlap, and +0.6 dBFS at the intro. The renders had no master limiter. Added one to the final mix (peaks at -2 dBFS, no auto-gain, loudness unchanged at -18.4 LUFS on the test).
+12. A T-posed body stood on the performer mark through all of episode 13: the offstage MC had picked up a leftover model in the scene. The build now strips any body from an offstage cast member and warns. Episodes 13 and 14 and the episode 10 test short go back through the renderer.
+13. Made-up products and places in podcast adverts (&quot;Sandwich Taxi&quot;, &quot;Puddle Insurance&quot;, &quot;Gate Two&quot;) held the Rex Pivot script as possible real people. Names made only of ordinary dictionary words are now a low (non-blocking) note; real brands are still the denylist&#x27;s and the reviewers&#x27; job.
+
+Next on the list:
+- Stand-up: vary Brad&#x27;s gestures (ep 10 Ollie laughs 3 times in a row with the same clip).
+- Lift the movement checks from WARN to FAIL once new episodes pass them, so the bar only goes up.
+</div></section>
+<section><h2>The night so far</h2><div class="log">19:58:51 === Brad: Undo (brad_standup) budget left: 10.474990144000003
+20:05:26   second fix failed: openrouter:anthropic/claude-opus-5.5 couldn&#x27;t make a clean edit for F01, F02, F03; talk it through in the chat or fix it by hand
+20:05:26   left for the owner: F01 [high] real_show: matches the real title &#x27;The Last Leg&#x27; (86% similar); F02 [medium] unknown_name: &#x27;Let Dana&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F03 [medium] unknown_name: &#x27;Only Dana&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section
+20:05:27 === Brad: Subtitles (brad_standup) budget left: 209.371969144
+20:11:54   second fix failed: openrouter:anthropic/claude-opus-5.5 couldn&#x27;t make a clean edit for F01, F02; talk it through in the chat or fix it by hand
+20:11:54   left for the owner: F01 [medium] unknown_name: &#x27;Only Brad&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F02 [medium] unknown_name: &#x27;As Brad&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section
+20:11:54 === Brad: The Thumbnail (brad_standup) budget left: 208.403068144
+20:17:19   second fix failed: openrouter:anthropic/claude-opus-5.5 couldn&#x27;t make a clean edit for F01; talk it through in the chat or fix it by hand
+20:17:19   left for the owner: F01 [medium] unknown_name: &#x27;Exit Strategy&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section
+20:17:19 === Brad: Lip Sync (brad_standup) budget left: 207.336960144
+20:22:35   handed off as episode_011
+20:22:35 === Brad: Skip Intro (brad_standup) budget left: 206.316760144
+20:27:58   second fix failed: openrouter:anthropic/claude-opus-5.5 couldn&#x27;t make a clean edit for F01; talk it through in the chat or fix it by hand
+20:27:58   left for the owner: F01 [medium] unknown_name: &#x27;Drop Dana&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section
+20:27:58 === Brad: The Comments (brad_standup) budget left: 205.372277144
+20:33:09   handed off as episode_012
+20:33:09 === Brad: Time Zones (brad_standup) budget left: 204.430335144
+20:34:48 === Rex Pivot Returns (conversations_dairy_farmer) budget left: 204.091291144
+20:43:41   second fix failed: openrouter:anthropic/claude-opus-5.5 couldn&#x27;t make a clean edit for F01, F02, F03, F04, F05, F06, F07, F08, F09; talk it through in the chat or fix it by hand
+20:43:41   left for the owner: F01 [medium] unknown_name: &#x27;Gate Two&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F02 [medium] unknown_name: &#x27;Sandwich Taxi&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F03 [medium] unknown_name: &#x27;Puddle Insurance&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F04 [medium] unknown_name: &#x27;Grayson&#x27;s Oat Milk&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F05 [medium] unknown_name: &#x27;Gate Two&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F06 [medium] unknown_name: &#x27;Sandwich Taxi&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F07 [medium] unknown_name: &#x27;Puddle Insurance&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F08 [medium] unknown_name: &#x27;Grayson&#x27;s Oat Milk&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F09 [medium] unknown_name: &#x27;Sandwich Taxi&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section
+20:43:42 === Tessa Later Returns (conversations_dairy_farmer) budget left: 202.222155144
+20:43:48 === Celeste Checkin Returns (conversations_dairy_farmer) budget left: 202.222155144
+20:53:31   second fix failed: openrouter:anthropic/claude-opus-5.5 couldn&#x27;t make a clean edit for F01, F02, F03; talk it through in the chat or fix it by hand
+20:53:31   left for the owner: F01 [medium] unknown_name: &#x27;Let Grayson&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F02 [medium] unknown_name: &#x27;Celeste&#x27;s Tessa&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section; F03 [medium] unknown_name: &#x27;Add Clementine&#x27; is not a known fictional name; confirm it isn&#x27;t a real person, then add it to the brief&#x27;s &#x27;Fictional names&#x27; section
+20:53:31 === Felix Yesterday Returns (conversations_dairy_farmer) budget left: 199.646470144
+20:36  scripts 6 · approved 5 · episodes rendered 0/10 · shorts 1/25 (18 queued) · spent $6.33
+20:48  scripts 7 · approved 6 · episodes rendered 1/10 · shorts 0/25 (19 queued) · spent $8.00
+20:35:42 === rescue Brad: Undo: clearance again on the fixed checks
+20:35:56 === rescue Brad: Subtitles: clearance again on the fixed checks
+20:36:05 === rescue Brad: The Thumbnail: clearance again on the fixed checks
+20:36:15 === rescue Brad: Skip Intro: clearance again on the fixed checks
+20:36:24 === render Brad: Undo (episode_013)
+20:41:59   rendered episode_013: verified, 97s, QC FAIL FAIL: true peak -0.6 dBTP (over -1); FAIL: tail after the last line: 15.7s; WARN: shot over_crowd_handheld held 9.4s from 6.4s (deliberate hold?); WARN: shot medium_handheld held 9.3s from 15.8s (deliberate hold?); WARN: shot medium_handheld held 11.8s from 51.3s (deliberate hold?); WARN: shot wide 
+20:41:59 === render Brad: Subtitles (episode_014)
+20:48:16 === rescue Rex Pivot Returns: clearance again on the fixed checks
+20:49:43 === render Brad: Undo (episode_013)</div></section>
+</main>
+</body>
+</html>
